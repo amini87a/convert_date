@@ -6,8 +6,6 @@ def shamsi_to_miladi(year, month, day):
         year += 622
     else:
         year += 621
-        
-   
     
     if is_leap(year):
         miladi_days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -39,7 +37,7 @@ def shamsi_to_miladi(year, month, day):
     print(f"Miladi: year:{year} month:{miladi_month} day:{miladi_day}")
 
 def miladi_to_shamsi(year, month, day):
-    # تبدیل سال میلادی به شمسی
+    
     if month < 3 or (month == 3 and day < 21):
         year -= 622
     else:
@@ -55,7 +53,6 @@ def miladi_to_shamsi(year, month, day):
         7: (4, 10), 8: (5, 10), 9: (6, 10), 10: (7, 10), 11: (8, 10), 12: (9, 9)
     }
     
-    # تبدیل روز میلادی به شمسی
     shamsi_month, base_day = mi_to_sha[month]
     shamsi_day = base_day + (day-1)
     
@@ -66,6 +63,10 @@ def miladi_to_shamsi(year, month, day):
     
         if shamsi_month > 12:
             shamsi_month = 1
+    if (month>=1 and month<=2)or (month>=5 and month<=9)or(month==11):
+        shamsi_day+=1
+    elif month==12:
+        shamsi_day+=2
     
     print(f"Shamsi: year:{year} month:{shamsi_month} day:{shamsi_day}")
 
